@@ -1,12 +1,26 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import {Home, Scanner, Login} from './components/index'
+import{
+  Navigation, 
+  Welcome, 
+  Transactions, 
+  Loader,
+  Footer,
+  Scanner
+} from './components'
 
 const App = () => {
   return (
-    <Routes>
-        <Route path="/" />
-    </Routes>
+    <div className='min-h-screen'>
+      <div className="gradient-bg-welcome">
+        <Navigation />
+        <Welcome />
+      </div>
+      <Scanner />
+      <Transactions />
+      <Footer />
+
+    </div>
   )
 }
 
