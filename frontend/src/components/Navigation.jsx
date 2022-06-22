@@ -13,13 +13,13 @@ const NavbarItem = ({title, classProps}) =>{
 
 const Navigation = () => {
   const [toggle, setToggle] = useState(false)
-  
+
   return (
     <nav className='w-full flex md:justify-center justify-between items-center p-4'>
       <div className='md:flex-[0.5] flex-initial justify-center items-center'>
         <img src={logo} className="w-32 cursore-pointer"/>
       </div>
-      <ul className='text-white md:flex hiddent list-none flex-row justify-between items-center flex-initial'>
+      <ul className='text-white md:flex hidden list-none flex-row justify-between items-center flex-initial'>
         {["Market", "Exchanger", "Tutorials", "Wallets"].map((item, index)=>(
           <NavbarItem key={item + index} title={item} />
         ))}
@@ -28,7 +28,22 @@ const Navigation = () => {
         </li>
       </ul>
       <div className='flex relative'>
-
+          {toggle ? 
+            <AiOutlineClose fontSize={28} className="text-white md:hidden cursor-pointer" onClick={()=>setToggle(false)}/> : 
+            <HiMenuAlt4 fontSize={28} className="text-white md:hidden cursor-pointer" onClick={()=>setToggle(true)}/>}
+            {toggle && (
+              <ul 
+              className='z-1 fixed top-0 -right-2 p-3 w-[70vw] h-screen shadow-2xl md:hidden list-none
+              flex flex-col justify-start items-end rounded-md blue-glassmorphism text-white animate-slide-in
+              '>
+                <li className='text-xl w-full my-2'>
+                  <AiOutlineClose onClick={() => setToggle(false)} />
+                </li>
+                {["Market", "Exchanger", "Tutorials", "Wallets"].map((item, index)=>(
+                  <NavbarItem key={item + index} title={item} classProps="my-2 text-lg" />
+                ))}
+              </ul>
+            )}
       </div>
     </nav>
   )
