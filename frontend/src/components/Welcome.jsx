@@ -1,13 +1,24 @@
 import React from 'react'
-import { AiFillPlayCircle } from 'react-icons/ai'
+import qrcode from 'qrcode'
 import {SiEthereum} from 'react-icons/si'
 import {BsInfoCircle} from 'react-icons/bs'
 import {Loader} from './'
 
+const Input =({placeholder, name, type, value, handleChange})=>(
+  <input 
+    placeholder={placeholder}
+    type={type}
+    value={value}
+    onChange={(e)=> handleChange(e, name)}
+    className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
+  />
+)
+
 const Welcome = () => {
 
   const connectWallet =()=>{}
-
+  const handleSubmit =()=>{}
+  
   return (
     <div className='flex w-full justify-center items-center'>
       <div className='flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4'>
@@ -47,7 +58,22 @@ const Welcome = () => {
                </div>
             </div>
           </div>
-          
+          <div className='p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism'>
+            <Input placeholder= "Shop Name" name ="shop" type="text" handleChange={()=>{}}/>
+            <Input placeholder= "Product Code" name ="code" type="number" handleChange={()=>{}}/>
+
+            <div className='h-[1px] w-full bg-gray-400 my-2'/>
+            {false ? (
+              <Loader />
+            ): (
+              <button
+              type="button"
+              onClick={handleSubmit}
+              >
+
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
