@@ -1,8 +1,8 @@
-import React from 'react'
-import qrcode from 'qrcode'
+import React, {useContext} from 'react'
 import {SiEthereum} from 'react-icons/si'
 import {BsInfoCircle} from 'react-icons/bs'
 import {Loader} from './'
+import { TransactionContext } from '../context/TransactionContext'
 
 const Input =({placeholder, name, type, value, handleChange})=>(
   <input 
@@ -16,6 +16,8 @@ const Input =({placeholder, name, type, value, handleChange})=>(
 
 const Welcome = () => {
 
+  const {value} = useContext(TransactionContext)
+  console.log(value)
   const connectWallet =()=>{}
   const handleSubmit =()=>{}
 
